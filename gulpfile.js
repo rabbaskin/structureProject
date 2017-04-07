@@ -1,13 +1,7 @@
  var gulp = require('gulp'),
-	concatCss = require('gulp-concat-css'),
-	minifyCSS = require('gulp-minify-css'),
-	notify = require('gulp-notify'),
-	autoprefixer = require('gulp-autoprefixer'),
-	rename = require('gulp-rename'),
 	browserSync = require('browser-sync').create(), // Static server
 	del = require('del'),
-	sass = require('gulp-sass');
-
+	$ = require('gulp-load-plugins')();
 
 gulp.task('del', function() {
 	return del('build')
@@ -15,12 +9,17 @@ gulp.task('del', function() {
 //connect server
 gulp.task('style', function () {
   return gulp.src('source/sass/style.sass')
-  	.pipe(sass())
-  	.pipe(autoprefixer({browsers: ['last 15 versions']}))
-  	.pipe(minifyCSS())
-  	.pipe(rename({suffix: '.min'}))
+  	.pipe($.sass())
+  	.pipe($.autoprefixer({browsers: ['last 15 versions']}))
+  	.pipe($.csso())
+  	.pipe($.rename({suffix: '.min'}))
   	.pipe(gulp.dest('build/styles'))
 });
+
+gulp.task('scripts', function() {
+	return gulp.src('source/js/**/*.js')
+		.pipe(gulp.dest('build/js'))
+})
 
 gulp.task('browser-sync', function() { 
 	browserSync.init({
@@ -31,7 +30,8 @@ gulp.task('browser-sync', function() {
 
 gulp.task('watch', function () {
 	gulp.watch('source/sass/*.sass', ['style'])
-	gulp.watch('source/index.html', ['html'])
+	gulp.watch('source/*.html', ['html'])
+	gulp.watch('source/js/*.js', ['scripts'])
 });
 
 gulp.task ('html', function () {
