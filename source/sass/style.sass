@@ -1,11 +1,45 @@
-=Roma($size, $style, $color)
-	border: $size $style $color
-=border($radius)
-	border-radius: $radius
-=color($net)
-	background-color: $net 
+body
+	margin: 0
+	padding: 0
+	border: 1px solid black
 
 
-p
-	+Roma(25px, solid, green)
-	+border(7px) 
+.wrapper
+	background-image: url(../img/fon1.png)
+	background-repeat: no-repeat
+	background-size: cover
+	background-attachment: fixed
+	width: 100vw
+	height: 100wh
+
+header
+	position: relative
+	//background-color: green
+	width: 100vw
+	height: 100vh
+	perspective: 900px
+
+
+
+article
+	transform-style: persprctive-3d
+	position: absolute
+	background-color: blue
+	font-size: 200%
+	color: white
+	top: 50%
+	width: 100%
+	text-align: center
+	transform-origin: left
+	transform: rotateY(30deg)
+h1
+	position: absolute
+	
+	transform: translateX(-60%)
+	left: 50%
+	//background-color: lightblue
+	width: 30vw
+	top: -5vh
+main 
+	background-color: red
+
