@@ -1,45 +1,29 @@
-body
-	margin: 0
+@import 'Normalize'
+
+* 	
 	padding: 0
-	border: 1px solid black
-
-
+	margin: 0
+	//border: 2px solid black
+	box-sizing: border-box
+	&::after,&::before
+		box-sizing: border-box
 .wrapper
-	background-image: url(../img/fon1.png)
-	background-repeat: no-repeat
-	background-size: cover
-	background-attachment: fixed
-	width: 100vw
-	height: 100wh
-
-header
-	position: relative
-	//background-color: green
-	width: 100vw
+	background-image: url(../img/background1.png)
 	height: 100vh
-	perspective: 900px
-
-
-
-article
-	transform-style: persprctive-3d
-	position: absolute
-	background-color: blue
-	font-size: 200%
-	color: white
-	top: 50%
+	background-size: cover
+header
 	width: 100%
-	text-align: center
-	transform-origin: left
-	transform: rotateY(30deg)
-h1
-	position: absolute
-	
-	transform: translateX(-60%)
-	left: 50%
-	//background-color: lightblue
-	width: 30vw
-	top: -5vh
-main 
-	background-color: red
-
+	position: fixed
+	background-color: rgb(77,89,161)
+	height: 20vh
+	display: flex
+	justify-content: space-between
+	align-items: center
+	padding: 0 20px
+	.img
+		height: 100px
+		width: 100px
+		background-color: pink
+	.form
+		@extend .img
+		background-color: yellow
